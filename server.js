@@ -13,3 +13,25 @@ const connect = mysql.createConnection({
     database: 'employees_db'
 })
 
+var figlet = require('figlet');
+figlet('Employee \n Management \n System', function(err, data) {
+    if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+    }
+    console.log(data)
+});
+
+// create inquirer prompts with choices
+
+/* 
+view all departments
+view all roles
+view all employees
+add a department
+add a role
+add an employee
+update role
+*/
+// create functions based on what is selected in the choices
