@@ -1,6 +1,6 @@
 // import required modules and packages
 const inquirer = require('inquirer');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const table = require('console.table');
 
 // create connection (coding standard to name connection) to sql database
