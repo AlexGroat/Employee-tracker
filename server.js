@@ -6,19 +6,19 @@ const table = require('console.table');
 // create connection (coding standard to name connection) to sql database
 const connection = mysql.createConnection({
     host: 'localhost',
-    port: 3301,
+    port: 3306,
     user: 'root',
-    password: '',
+    password: '@Hawthorn08',
     database: 'employees_db'
 })
 
-// connect to server and db
+/* // connect to server and db
 connection.connect(function (err) {
     if (err) throw err;
     selectMenu();
-})
+}) */
 
-var figlet = require('figlet');
+/* var figlet = require('figlet');
 figlet('Employee \n Management \n System', function (err, data) {
     if (err) {
         console.log('Something went wrong...');
@@ -26,7 +26,7 @@ figlet('Employee \n Management \n System', function (err, data) {
         return;
     }
     console.log(data)
-});
+}); */
 
 function selectMenu() {
     inquirer
@@ -49,6 +49,17 @@ function selectMenu() {
 
 // add functions to correlating choices in select menu
 
+
+// view department from select menu
+
+function viewDepartments() {
+    var query = 'SELECT * FROM department';
+    connection.query(query, function(err, res) {
+        if(err) throw err;
+        console.table(res);
+        selectMenu();
+    })
+};
 
 
 // create inquirer prompts with choices
