@@ -20,14 +20,14 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'employees_db'
-})
+});
 
 
 // connect to server and db
 connection.connect(function (err) {
     if (err) throw err;
     selectMenu();
-})
+});
 
 function selectMenu() {
     inquirer
@@ -39,10 +39,12 @@ function selectMenu() {
                 'View all departments',
             ]
         }).then(function (answer) {
-            switch (answer.action) {
+            switch (answer.option) {
+
                 case 'View all departments':
                     viewDepartments();
                     break;
+
                 default:
                     break;
             }
