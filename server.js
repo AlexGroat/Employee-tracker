@@ -1,4 +1,4 @@
- // import required modules and packages
+// import required modules and packages
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const table = require('console.table');
@@ -11,19 +11,19 @@ figlet('Employee \n Management \n System', function (err, data) {
         return;
     }
     console.log(data)
-}); 
+});
 
 // create connection (coding standard to name connection) to sql database
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '@Hawthorn08',
+    password: '',
     database: 'employees_db'
 })
 
 
- // connect to server and db
+// connect to server and db
 connection.connect(function (err) {
     if (err) throw err;
     selectMenu();
@@ -32,9 +32,9 @@ connection.connect(function (err) {
 function selectMenu() {
     inquirer
         .prompt({
-            name: 'choice',
             type: 'list',
-            message: 'Welcome to the employee database! Please select an option from the menu below.', 
+            name: 'option',
+            message: 'Welcome to the employee database! Please select an option from the menu below.',
             choices: [
                 'View all departments',
             ]
@@ -43,8 +43,8 @@ function selectMenu() {
                 case 'View all departments':
                     viewDepartments();
                     break;
-                    default:
-                        break;
+                default:
+                    break;
             }
         })
 }
@@ -55,10 +55,10 @@ function selectMenu() {
 // view department from select menu
 function viewDepartments() {
     var query = 'SELECT * FROM department';
-    connection.query(query, function(err, res) {
-        if(err)throw err;
+    connection.query(query, function (err, res) {
+        if (err) throw err;
         console.table('All Departments:', res);
-        options();
+        selectMenu();
     })
 };
 
