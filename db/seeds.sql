@@ -1,28 +1,28 @@
-/* Use employees database */
+USE employees_db;
 
 INSERT INTO department (name)
 VALUES 
-('Web Development'),
-('Legal'),
+('Information Systems and Technology'),
 ('Finance'),
-('Sales'),
+('Legal'),
 ('Human Resources'),
-('Reception');
+('Security'),
+('Sales');
 
 INSERT INTO role (title, salary, department_id)
 VALUES
-('Engineer', 100000, 1),
-('Lawyer', 120000, 2),
-('Accountant', 90000, 3),
-('Sales Rep', 70000, 4),
-('HR Advisor', 80000, 5),
-('Receptionist', 60000, 6);
+('Web Developer', 90000, 1),
+('Accountant', 70000, 2),
+('Paralegal', 50000, 3),
+('Manager', 70000, 4),
+('Engineer', 90000, 5),
+('Sales Rep', 40000, 6);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-('Pierce', 'Hawthorne', 1, 48),
-('Abed', 'Nadir', 2, 21),
-('Troy', 'Barnes', 3, 26),
-('Annie', 'Edison', 4, 56),
-('Britta', 'Perry', 5, 96),
-('Jeff', 'Winger', 6, 12),
+('John', 'Smith', 1, 458),
+('Ronald', 'Young', 2, 276),
+('David', 'Miller', 3, 486),
+('Maria', 'Hall', 4, 126),
+('Linda', 'Martin', 5, 724),
+('Taylor', 'Wilson', 6, 157);
