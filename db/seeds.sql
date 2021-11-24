@@ -20,9 +20,9 @@ VALUES
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES 
-(''),
-(''),
-(''),
-(''),
-(''),
-(''),
+('Pierce', 'Hawthorne', 1, 48),
+('Abed', 'Nadir', 2, 21),
+('Troy', 'Barnes', 3, 26),
+('Annie', 'Edison', 4, 56),
+('Britta', 'Perry', 5, 96),
+('Jeff', 'Winger', 6, 12),
