@@ -38,7 +38,16 @@ function selectMenu() {
                 'View all departments',
             ]
         })
+        .then(function (choice) {
+            switch (choice.action) {
+                case 'View all departments':
+                    viewDepartments();
+                    break;
+            }
+        })
 }
+
+// add functions to correlating choices in select menu
 
 
 
