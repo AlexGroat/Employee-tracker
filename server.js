@@ -37,6 +37,8 @@ function selectMenu() {
             message: 'Welcome to the employee database! Please select an option from the menu below.',
             choices: [
                 'View all departments',
+                'View all employees',
+                'View all roles',
             ]
         }).then(function (answer) {
             switch (answer.option) {
@@ -45,6 +47,13 @@ function selectMenu() {
                     viewDepartments();
                     break;
 
+                case 'View all employees':
+                    viewEmployees();
+                    break;
+
+                case 'View all roles':
+                    viewRoles();
+                    break;
                 default:
                     break;
             }
@@ -63,6 +72,10 @@ function viewDepartments() {
         selectMenu();
     })
 };
+
+function viewEmployees()
+
+function viewRoles()
 
 
 // create inquirer prompts with choices
