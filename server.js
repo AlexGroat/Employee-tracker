@@ -77,7 +77,7 @@ function viewEmployees(){
     var query = 'SELECT * FROM employee';
     connection.query(query, function (err, res) {
         if (err) throw err;
-        console.table('All Departments:', res);
+        console.table('All Employees:', res);
         selectMenu();
     })
 };
@@ -86,7 +86,7 @@ function viewRoles(){
     var query = 'SELECT * FROM role';
     connection.query(query, function (err, res) {
         if (err) throw err;
-        console.table('All Departments:', res);
+        console.table('All Roles:', res);
         selectMenu();
     })
 };
