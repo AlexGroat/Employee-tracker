@@ -44,6 +44,8 @@ function selectMenu() {
         }).then(function (answer) {
             switch (answer.option) {
 
+                // case handle which selection the user clicks and runs the appropriate function upon selection
+
                 case 'View all departments':
                     viewDepartments();
                     break;
@@ -71,31 +73,31 @@ function selectMenu() {
 
 // view department from select menu
 function viewDepartments() {
-    var query = 'SELECT * FROM department';
+    const query = 'SELECT * FROM department';
     connection.query(query, function (err, res) {
         if (err) throw err;
         console.table('All Departments:', res);
         selectMenu();
     })
-};
+}
 
 function viewEmployees() {
-    var query = 'SELECT * FROM employee';
+    const query = 'SELECT * FROM employee';
     connection.query(query, function (err, res) {
         if (err) throw err;
         console.table('All Employees:', res);
         selectMenu();
     })
-};
+}
 
 function viewRoles() {
-    var query = 'SELECT * FROM role';
+    const query = 'SELECT * FROM role';
     connection.query(query, function (err, res) {
         if (err) throw err;
         console.table('All Roles:', res);
         selectMenu();
-    })
-};
+    });
+}
 
 function addDepartment() {
     inquirer
@@ -105,7 +107,16 @@ function addDepartment() {
                 message: 'What is the name of the department you wish to add?',
                 name: 'department'
             })
-        
+        .then(function (res) {
+            // assigns user input into a variable which can be entered with template literals
+            const newDepartment = res.department;
+            const query = `INSERT INTO department (name) VALUES("${newDepartment}")`; // add template literal into the sql query
+            connection.query(query, function (err, res) {
+                if (err) throw err;
+                console.table(res);
+                selectMenu();
+            });
+        });
 }
 
 // create inquirer prompts with choices
