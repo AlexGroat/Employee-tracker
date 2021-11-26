@@ -39,6 +39,7 @@ function selectMenu() {
                 'View all departments',
                 'View all employees',
                 'View all roles',
+                'Add a department',
             ]
         }).then(function (answer) {
             switch (answer.option) {
@@ -54,6 +55,11 @@ function selectMenu() {
                 case 'View all roles':
                     viewRoles();
                     break;
+
+                case ' Add a department':
+                    addDepartment();
+                    break;
+
                 default:
                     break;
             }
@@ -73,7 +79,7 @@ function viewDepartments() {
     })
 };
 
-function viewEmployees(){
+function viewEmployees() {
     var query = 'SELECT * FROM employee';
     connection.query(query, function (err, res) {
         if (err) throw err;
@@ -82,7 +88,7 @@ function viewEmployees(){
     })
 };
 
-function viewRoles(){
+function viewRoles() {
     var query = 'SELECT * FROM role';
     connection.query(query, function (err, res) {
         if (err) throw err;
@@ -90,6 +96,17 @@ function viewRoles(){
         selectMenu();
     })
 };
+
+function addDepartment() {
+    inquirer
+        .prompt(
+            {
+                type: 'input',
+                message: 'What is the name of the department you wish to add?',
+                name: 'department'
+            })
+        
+}
 
 // create inquirer prompts with choices
 
