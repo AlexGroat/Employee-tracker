@@ -23,7 +23,7 @@ Upon running node server.js in the terminal you will be presented with the appli
 
 ![ems first screen](https://user-images.githubusercontent.com/88314794/143849024-52fc5d54-6f2b-4390-9b06-564687a34a46.png)
 
-
+Link to application demonstration: https://watch.screencastify.com/v/nb5hFYjgUl0nriRvxaSH
         
 ## Contributions
 Email me at a.groat.codes@gmail.com
