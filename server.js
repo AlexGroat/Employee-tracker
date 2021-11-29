@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const table = require('console.table');
 
+// employee management system graphic at start of node server.js
 var figlet = require('figlet');
 figlet('Employee \n Management \n System', function (err, data) {
     if (err) {
@@ -98,6 +99,7 @@ function viewDepartments() {
     })
 }
 
+// view employees from select menu
 function viewEmployees() {
     const query = 'SELECT * FROM employee';
     connection.query(query, function (err, res) {
@@ -107,6 +109,7 @@ function viewEmployees() {
     })
 }
 
+// view roles from select menu
 function viewRoles() {
     const query = 'SELECT * FROM role';
     connection.query(query, function (err, res) {
@@ -116,6 +119,7 @@ function viewRoles() {
     });
 }
 
+// insert a new department into the department table
 function addDepartment() {
     inquirer
         .prompt(
@@ -127,6 +131,7 @@ function addDepartment() {
         .then(function (res) {
             // assigns user input into a variable which can be entered with template literals
             const newDepartment = res.department;
+            // use template literals to include user input in the sql query
             const query = `INSERT INTO department (name) VALUES("${newDepartment}")`; // add template literal into the sql query
             connection.query(query, function (err, res) {
                 if (err) throw err;
@@ -136,6 +141,7 @@ function addDepartment() {
         });
 }
 
+// insert a new employee into the employee table
 function addEmployee() {
     inquirer
         .prompt([
@@ -161,10 +167,12 @@ function addEmployee() {
             }
         ])
         .then(function (res) {
+            // create constructor which assigns the user response
             const firstName = res.firstName;
             const lastName = res.lastName;
             const roleID = res.roleID;
             const managerID = res.managerID;
+            // use template literals to insert user response into the sql query
             const query = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES("${firstName}", "${lastName}", "${roleID}", "${managerID}")`;
             connection.query(query, function (err, res) {
                 if (err) throw err;
