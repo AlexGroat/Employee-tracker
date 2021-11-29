@@ -183,7 +183,37 @@ function addEmployee() {
 }
 
 // add a role
-
+function addRole() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the name for the new role?',
+                name: 'roleName'
+            },
+            {
+                type: 'input',
+                message: 'What is the salary for the new role?',
+                name: 'roleSalary',
+            },
+            {
+                type: 'input',
+                message: 'What is the new role department ID?',
+                name: 'newRoleID'
+            }
+        ])
+        .then(function (res) {
+            const roleName = res.roleName;
+            const roleSalary = res.roleSalary;
+            const newRoleID = res.newRoleID;
+            const query = `INSERT INTO department (title, salary, department_id) VALUES("${roleName}", "${roleSalary}", "${newRoleID}")`;
+            connection.query(query, function (err, res) {
+                if (err) throw err;
+                console.table(res);
+                selectMenu();
+            });
+        });
+}
 // update a role
 
 
