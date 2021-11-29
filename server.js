@@ -40,6 +40,10 @@ function selectMenu() {
                 'View all employees',
                 'View all roles',
                 'Add a department',
+                'Add an employee',
+                'Add a role',
+                'Update a role',
+                'QUIT'
             ]
         }).then(function (answer) {
             switch (answer.option) {
