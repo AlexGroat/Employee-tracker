@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
+    password: '@Hawthorn08',
     database: 'employees_db'
 });
 
@@ -214,7 +214,21 @@ function addRole() {
             });
         });
 }
-// update a role
 
+// update a role
+function updateRole() {
+    const query = 'SELECT id, first_name, last_name, role_id FROM employee';
+    connection.query(query, function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        {
+            inquirer.prompt({
+                type: 'input',
+                message: 'Please choose an employee that needs to be update (please refer to the ID)',
+                name: 'employee'
+            });
+        }
+    });
+}
 
 
