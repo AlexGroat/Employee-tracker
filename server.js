@@ -161,19 +161,13 @@ function addEmployee() {
             }
         ])
         .then(function (res) {
-            
+
         })
 }
 
-// create inquirer prompts with choices
+// add a role
 
-/*
-add a role
-add an employee
-update role
-*/
-
-// create functions based on what is selected in the choices
+// update a role
 
 
 
