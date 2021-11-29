@@ -219,7 +219,7 @@ function addRole() {
 updateRole= () => {
     connection.query(`SELECT * FROM employee`, (err, data) => {
         if (err) throw err;
-        // maps a new array with the relevant information 
+        // maps a new array with the relevant information which will be displayed in the inquirer prompt
         const employees = data.map(({ id, first_name, last_name }) => ({ name: first_name + " " + last_name, value: id }));
 
         inquirer.prompt([
@@ -230,6 +230,7 @@ updateRole= () => {
                 choices: employees
             }
         ])
+            // upon selection it will update the selected team members information
             .then(answer => {
                 connection.query(`SELECT * FROM role`, (err, data) => {
                     if (err) throw err;
