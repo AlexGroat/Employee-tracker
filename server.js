@@ -15,6 +15,7 @@ figlet('Employee \n Management \n System', function (err, data) {
 });
 
 // create connection (coding standard to name connection) to sql database
+// DONT PUSH TO BRANCH AGAIN AS PWORD IS CONNECTED
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -206,7 +207,7 @@ function addRole() {
             const roleName = res.roleName;
             const roleSalary = res.roleSalary;
             const newRoleID = res.newRoleID;
-            const query = `INSERT INTO department (title, salary, department_id) VALUES("${roleName}", "${roleSalary}", "${newRoleID}")`;
+            const query = `INSERT INTO role (title, salary, department_id) VALUES("${roleName}", "${roleSalary}", "${newRoleID}")`;
             connection.query(query, function (err, res) {
                 if (err) throw err;
                 console.table(res);
