@@ -216,19 +216,42 @@ function addRole() {
 }
 
 // update a role
-function updateRole() {
-    const query = 'SELECT id, first_name, last_name, role_id FROM employee';
-    connection.query(query, function (err, res) {
+updateRole= () => {
+    connection.query(`SELECT * FROM employee`, (err, data) => {
         if (err) throw err;
-        console.table(res);
-        {
-            inquirer.prompt({
-                type: 'input',
-                message: 'Please choose an employee that needs to be update (please refer to the ID)',
-                name: 'employee'
+        // maps a new array with the relevant information 
+        const employees = data.map(({ id, first_name, last_name }) => ({ name: first_name + " " + last_name, value: id }));
+
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'name',
+                message: "Which employee would you like to update?",
+                choices: employees
+            }
+        ])
+            .then(answer => {
+                connection.query(`SELECT * FROM role`, (err, data) => {
+                    if (err) throw err;
+                    const employee = answer.name;
+                    const roles = data.map(({ id, title }) => ({ name: title, value: id }));
+                    inquirer.prompt([
+                        {
+                            type: 'list',
+                            name: 'role',
+                            message: `What is the employee's new role?`,
+                            choices: roles
+                        }
+                    ])
+                        .then(answer => {
+                            const role = answer.role;
+                            const arr = [role, employee];
+                            connection.query(`UPDATE employee SET role_id = ? WHERE id = ?`, arr, (err, result) => {
+                                if (err) throw err;
+                                selectMenu();
+                            })
+                        })
+                })
             });
-        }
     });
 }
-
-
