@@ -58,11 +58,24 @@ function selectMenu() {
                     viewRoles();
                     break;
 
-                case ' Add a department':
+                case 'Add a department':
                     addDepartment();
                     break;
 
-                default:
+                case 'Add an employee':
+                    addEmployee();
+                    break;
+
+                case 'Add a role':
+                    addRole();
+                    break;
+
+                case 'Update a role':
+                    updateRole();
+                    break;
+
+                case 'QUIT':
+                    connection.end();
                     break;
             }
         })
