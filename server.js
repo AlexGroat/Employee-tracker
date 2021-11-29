@@ -136,6 +136,35 @@ function addDepartment() {
         });
 }
 
+function addEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: 'What is the first name of the new employee?',
+                name: 'firstName'
+            },
+            {
+                type: 'input',
+                message: 'What is the last name of the new employee?',
+                name: 'lastName'
+            },
+            {
+                type: 'input',
+                message: 'What is the role ID of the new employee?',
+                name: 'roleID'
+            },
+            {
+                type: 'input',
+                message: 'What is the manager ID of the new employee?',
+                name: 'managerID'
+            }
+        ])
+        .then(function (res) {
+            
+        })
+}
+
 // create inquirer prompts with choices
 
 /*
